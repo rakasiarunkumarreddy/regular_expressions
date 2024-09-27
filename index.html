@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <li>Task 1: Validate an Email Address
+        Create a regular expression that checks if a given string is a valid email address. The basic rules are:
+        It must contain an @ symbol.
+        The domain part must have at least one . (dot) after the @.
+        The domain part should only contain alphanumeric characters and dots (e.g., gmail.com or yahoo.co.uk).</li><br>
+    <form id="form" action="">
+        <input id="input" type="email" placeholder="Enter your email">
+        <button id="btn">Submit</button>
+    </form>
+    <p id="para"></p><br><br>
+
+
+    <li>Task 3: Validate a Password
+        Create a regular expression to validate a password based on the following criteria:
+        It should be at least 8 characters long.
+        It should contain at least one lowercase letter, one uppercase letter, one digit, and one special character.
+        </li><br>    <form id="form1" action="">
+        <input type="password" id="pass1" placeholder="Enter your Password">
+        <button id="btn1">Submit</button>
+    </form>
+
+    <h1 id="head"></h1>
+
+    <script>
+        let form = document.getElementById("form");
+        let input = document.getElementById("input");
+        let email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let p = document.getElementById("para");
+            if (email.test(input.value)) {
+                p.innerHTML = "Email: " + input.value;
+            } else {
+                p.innerHTML = "Enter a valid email address.";
+            }
+        });
+
+        let form1 = document.getElementById("form1");
+        let pass1 = document.getElementById("pass1");
+        let Password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        form1.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let h1 = document.getElementById("head");
+
+            if (Password.test(pass1.value)) {
+                h1.innerHTML = "Password: " + pass1.value;
+            } else {
+                h1.innerHTML = 'Enter a correct password. Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long.';
+            }
+        });
+    </script>
+</body>
+</html>
